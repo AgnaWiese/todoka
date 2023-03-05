@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_shopping_lists"
+        android:icon="@drawable/ic_baseline_shopping_bag_24"
+        android:title="@string/title_shopping_lists" />
+
+    <item
+        android:id="@+id/navigation_recipes"
+        android:icon="@drawable/ic_outline_restaurant_24"
+        android:title="@string/title_recipes" />
+
+    <item
+        android:id="@+id/navigation_more"
+        android:icon="@drawable/ic_outline_more_horiz_24"
+        android:title="@string/title_more" />
+</menu>
