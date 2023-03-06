@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.evgtrush.foodbag">
+    package="toDoKa">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".presentation.FoodBagApp"
+        android:name="toDoKa.presentation.FoodBagApp"
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,7 +17,7 @@
         android:theme="@style/Theme.FoodBag"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name="toDoKa.presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

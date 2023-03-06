@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Покупочка</string>
+    <string name="app_name">ТуДуКа</string>
 
-    <string name="title_shopping_lists">Списки покупок</string>
+    <string name="title_toDoKa_lists">Список тудук</string>
     <string name="title_recipes">Рецепты</string>
     <string name="title_more">Еще</string>
 
     <string name="general_error">Что-то пошло не так…</string>
-    <string name="added_to_shopping_list">Добавлено в списки покупок</string>
+    <string name="added_to_toDoKa_list">Добавлено в списки тудук</string>
 
-    <string name="about_foodbag">О Покупочке</string>
-    <string name="about_foodbag_message">by Eugeniya Trushkina\n© 2023, all rights reserved\n\nVersion 1.0.0</string>
+    <string name="about_toDoKa">О ТудуКе</string>
+    <string name="about_toDoKa_message">by Eugeniya Trushkina\n© 2023, all rights reserved\n\nVersion 1.0.0</string>
     <string name="view_source_code">Посмотреть исходный код</string>
 
     <string name="title_create_list">Создать список</string>
@@ -32,9 +32,9 @@
 
     <string name="title_about_recipe">О рецепте</string>
     <string name="title_ingredients">Ингридиенты</string>
-    <string name="add_to_shopping_list">Добавить список покупок</string>
-    <string name="сooking_steps">Шаги приготовления</string>
+    <string name="add_to_toDoKa_list">Добавить список тудук</string>
+    <string name="steps2do">Шаги выполнения</string>
 
-    <string name="empty_shoppings_lists_hint">Добавь свой первый список покупок :)</string>
-    <string name="empty_shoppings_items_hint">Добавь свою первую покупочку :)</string>
+    <string name="empty_toDoKa_lists_hint">Добавь свой первый список тудук :)</string>
+    <string name="empty_toDoKa_items_hint">Добавь свою первую тудуку :)</string>
 </resources>

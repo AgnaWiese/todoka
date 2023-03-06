@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Base.Theme.FoodBag" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Base.Theme.ToDoKa" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
@@ -28,6 +28,6 @@
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
     </style>
 
-    <style name="Theme.FoodBag" parent="Base.Theme.FoodBag" />
+    <style name="Theme.ToDoKa" parent="Base.Theme.ToDoKa" />
 
 </resources>

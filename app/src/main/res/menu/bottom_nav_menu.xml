@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_shopping_lists"
-        android:icon="@drawable/ic_baseline_shopping_bag_24"
-        android:title="@string/title_shopping_lists" />
+        android:id="@+id/navigation_toDoKa_lists"
+        android:icon="@drawable/ic_baseline_todoka_bag_24"
+        android:title="@string/title_toDoKa_lists" />
 
     <item
         android:id="@+id/navigation_recipes"

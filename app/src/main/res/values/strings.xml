@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FoodBag</string>
+    <string name="app_name">toDoKa</string>
 
-    <string name="title_shopping_lists">Shopping lists</string>
+    <string name="title_toDoKa_lists">toDoKa lists</string>
     <string name="title_recipes">Recipes</string>
     <string name="title_more">More</string>
 
     <string name="general_error">Something went wrong…</string>
-    <string name="added_to_shopping_list">Added to shopping lists</string>
+    <string name="added_to_toDoKa_list">Added to toDoKa lists</string>
 
-    <string name="about_foodbag">About FoodBag</string>
-    <string name="about_foodbag_message">by Eugeniya Trushkina\n© 2023, all rights reserved\n\nVersion 1.0.0</string>
+    <string name="about_toDoKa">About toDoKa</string>
+    <string name="about_toDoKa_message">by Eugeniya Trushkina\n© 2023, all rights reserved\n\nVersion 1.0.0</string>
     <string name="view_source_code">View the source code</string>
 
     <string name="title_create_list">Create list</string>
@@ -30,12 +30,12 @@
     <string name="edit_list">Edit list</string>
     <string name="edit_item">Edit item</string>
 
-    <string name="url_project_github" translatable="false">https://github.com/AgnaWiese/FoodBag</string>
-    <string name="title_about_recipe">About recipe</string>
+    <string name="url_project_github" translatable="false">https://github.com/AgnaWiese/todoka</string>
+    <string name="title_about_recipe">About</string>
     <string name="title_ingredients">Ingredients</string>
-    <string name="add_to_shopping_list">Add to shopping list</string>
-    <string name="сooking_steps">Сooking steps</string>
+    <string name="add_to_toDoKa_list">Add to toDoka</string>
+    <string name="steps2do">steps2do</string>
 
-    <string name="empty_shoppings_lists_hint">Add your first shopping list :)</string>
-    <string name="empty_shoppings_items_hint">Add your first shopping item :)</string>
+    <string name="empty_toDoKa_lists_hint">Add your first toDoka  :)</string>
+    <string name="empty_toDoKa_items_hint">Add your first toDoka item :)</string>
 </resources>

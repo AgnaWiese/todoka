@@ -60,7 +60,7 @@
                 android:paddingHorizontal="@dimen/activity_horizontal_margin"
                 android:minHeight="?attr/listPreferredItemHeight"
                 android:gravity="center_vertical|start"
-                android:text="@string/about_foodbag"
+                android:text="@string/about_toDoKa"
                 android:textAppearance="?attr/textAppearanceBodyLarge"
                 android:background="?selectableItemBackground"
                 android:clickable="true"
