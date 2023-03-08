@@ -36,12 +36,12 @@ class RecipesDetailsViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(RecipesDetailsUiState())
     val uiState: StateFlow<RecipesDetailsUiState> = _uiState.asStateFlow()
 
-    fun createToDoKaListByIngredients(shoppingListName: String, ingredients: List<RecipeIngredient>) {
+    fun createToDoKaListByIngredients(toDoKaListName: String, ingredients: List<RecipeIngredient>) {
         viewModelScope.launch {
             try {
                 interactor.createToDoKaListByIngredients(
-                    shoppingList = ToDoKaList(
-                        name = shoppingListName
+                    toDoKaList = ToDoKaList(
+                        name = toDoKaListName
                     ),
                     ingredients = ingredients
                 )

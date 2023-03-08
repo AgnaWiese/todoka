@@ -28,7 +28,7 @@ interface ToDoKaListInteractor {
     suspend fun createToDoKaListByIngredients(toDoKaList: ToDoKaList,
                                               ingredients: List<RecipeIngredient>)
 
-    suspend fun editToDoKaItemList(toDoKaList: ToDoKaList)
+    suspend fun editToDoKaList(toDoKaList: ToDoKaList)
 
     suspend fun removeToDoKaList(toDoKaList: ToDoKaList)
 

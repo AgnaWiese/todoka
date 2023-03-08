@@ -52,7 +52,7 @@ class MockToDoKaListRepositoryImpl @Inject constructor() : ToDoKaListRepository 
         ToDoKaItem(3,"Молоко"),
     )
 
-    override suspend fun addToDoKaItemItem(toDoKaItem: ToDoKaItem) {
+    override suspend fun addToDoKaItem(toDoKaItem: ToDoKaItem) {
     }
 
     override suspend fun editToDoKaItem(toDoKaItem: ToDoKaItem) {

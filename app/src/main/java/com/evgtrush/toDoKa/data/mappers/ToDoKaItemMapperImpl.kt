@@ -26,7 +26,7 @@ class ToDoKaItemMapperImpl @Inject constructor(): ToDoKaItemMapper {
             id = entity.uid,
             name = entity.name,
             bought = entity.bought,
-            toDoKaListId = entity.shoppingListId
+            toDoKaListId = entity.toDoKaListId
         )
 
     override fun reverse(model: ToDoKaItem): ToDoKaItemEntity =
@@ -34,6 +34,6 @@ class ToDoKaItemMapperImpl @Inject constructor(): ToDoKaItemMapper {
             uid = model.id,
             name = model.name,
             bought = model.bought,
-            shoppingListId = model.toDoKaListId
+            toDoKaListId = model.toDoKaListId
         )
 }

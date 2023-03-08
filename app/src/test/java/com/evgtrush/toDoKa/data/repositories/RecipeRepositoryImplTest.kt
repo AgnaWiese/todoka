@@ -55,14 +55,14 @@ class RecipeRepositoryImplTest {
             RecipeDto(
                 name = "Test Recipe",
                 type = "main dish",
-                author = "FoodBag"
+                author = "ToDoKa"
             )
         )
         recipes = listOf(
             Recipe(
                 name = "Test Recipe",
                 type = "main dish",
-                author = "FoodBag"
+                author = "ToDoKa"
             )
         )
     }

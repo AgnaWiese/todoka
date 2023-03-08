@@ -23,19 +23,19 @@ interface ToDoKaListRepository {
 
     suspend fun getToDoKaLists(): List<ToDoKaList>
 
-    suspend fun createToDoKaList(shoppingList: ToDoKaList)
+    suspend fun createToDoKaList(toDoKaList: ToDoKaList)
 
-    suspend fun createToDoKaListByIngredients(shoppingList: ToDoKaList, ingredients: List<RecipeIngredient>)
+    suspend fun createToDoKaListByIngredients(toDoKaList: ToDoKaList, ingredients: List<RecipeIngredient>)
 
-    suspend fun editToDoKaList(shoppingList: ToDoKaList)
+    suspend fun editToDoKaList(toDoKaList: ToDoKaList)
 
-    suspend fun removeToDoKaList(shoppingList: ToDoKaList)
+    suspend fun removeToDoKaList(toDoKaList: ToDoKaList)
 
-    suspend fun getToDoKaItems(shoppingListId: Int): List<ToDoKaItem>
+    suspend fun getToDoKaItems(toDoKaListId: Int): List<ToDoKaItem>
 
-    suspend fun addToDoKaItem(shoppingItem: ToDoKaItem)
+    suspend fun addToDoKaItem(toDoKaItem: ToDoKaItem)
 
-    suspend fun editToDoKaItem(shoppingItem: ToDoKaItem)
+    suspend fun editToDoKaItem(toDoKaItem: ToDoKaItem)
 
-    suspend fun removeToDoKaItem(shoppingItem: ToDoKaItem)
+    suspend fun removeToDoKaItem(toDoKaItem: ToDoKaItem)
 }

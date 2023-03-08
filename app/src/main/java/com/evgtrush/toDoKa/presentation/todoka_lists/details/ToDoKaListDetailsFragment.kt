@@ -31,6 +31,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.evgtrush.toDoKa.R
+import com.evgtrush.toDoKa.databinding.FragmentTodokaListDetailsBinding
 import com.evgtrush.toDoKa.domain.models.ToDoKaItem
 import com.evgtrush.toDoKa.presentation.todoka_lists.adapter.ToDoKaListItemsAdapter
 import com.evgtrush.toDoKa.presentation.utils.hideBottomNav
@@ -47,7 +48,7 @@ class ToDoKaListDetailsFragment : Fragment(R.layout.fragment_todoka_list_details
 
     private val args: ToDoKaListDetailsFragmentArgs by navArgs()
 
-    private var _binding: FragmentToDoKaListDetailsBinding? = null
+    private var _binding: FragmentTodokaListDetailsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -55,7 +56,7 @@ class ToDoKaListDetailsFragment : Fragment(R.layout.fragment_todoka_list_details
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentToDoKaListDetailsBinding.inflate(inflater, container, false)
+        _binding = FragmentTodokaListDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -64,7 +65,7 @@ class ToDoKaListDetailsFragment : Fragment(R.layout.fragment_todoka_list_details
 
         hideBottomNav()
 
-        val recipe = args.shoppingList
+       val recipe = args.todokaList
         with(binding) {
             toolbar.apply {
                 setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
@@ -86,7 +87,7 @@ class ToDoKaListDetailsFragment : Fragment(R.layout.fragment_todoka_list_details
     }
 
     private fun getToDoKaItemsAsync() {
-        args.shoppingList?.let { it ->
+        args.todokaList?.let { it ->
             binding.progress.visibility = View.VISIBLE
             viewModel.getToDoKaListItem(it.id)
             viewLifecycleOwner.lifecycleScope.launch {
@@ -130,7 +131,7 @@ class ToDoKaListDetailsFragment : Fragment(R.layout.fragment_todoka_list_details
                 viewModel.addToDoKaItem(
                     ToDoKaItem(
                         name = view.findViewById<EditText>(R.id.textField).text.toString(),
-                        toDoKaListId = args.toDoKaList?.id ?: 0 //TODO: dirty
+                        toDoKaListId = args.todokaList?.id ?: 0 //TODO: dirty
                     )
                 )
                 dialog.dismiss()

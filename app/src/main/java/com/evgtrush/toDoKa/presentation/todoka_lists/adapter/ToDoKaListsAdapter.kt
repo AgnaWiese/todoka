@@ -21,9 +21,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.evgtrush.toDoKa.databinding.ListItemTodokaItemBinding
 import com.evgtrush.toDoKa.domain.models.ToDoKaList
-import com.evgtrush.toDoKa.presentation.todoka_lists.ToDoKaListsFragmentDirections
 import com.evgtrush.toDoKa.presentation.todoka_lists.ToDoKaListsViewModel
+import com.evgtrush.toDoKa.presentation.todoka_lists.widgets.EditToDoKaListBottomSheet
+import com.evgtrush.toDoKa.presentation.todoka_lists.ToDoKaListsFragmentDirections
 
 internal class ToDoKaListsAdapter(
     private val toDoKaLists: List<ToDoKaList>,
@@ -33,7 +35,7 @@ internal class ToDoKaListsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoKaListViewHolder =
         ToDoKaListViewHolder(
-            ListItemToDoKaListBinding.inflate(
+            ListItemTodokaItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
@@ -43,7 +45,7 @@ internal class ToDoKaListsAdapter(
 
     override fun getItemCount(): Int = toDoKaLists.size
 
-    internal class ToDoKaListViewHolder(private val binding: ListItemToDoKaListBinding) : RecyclerView.ViewHolder(binding.root) {
+    internal class ToDoKaListViewHolder(private val binding: ListItemTodokaItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindView(toDoKaList: ToDoKaList, fragmentManager: FragmentManager, viewModel: ToDoKaListsViewModel) {
             with(binding) {
@@ -56,7 +58,7 @@ internal class ToDoKaListsAdapter(
                 }
 
                 root.setOnClickListener {
-                    val direction = ToDoKaListsFragmentDirections.actionOpenToDoKaList(toDoKaList)
+                    val direction = ToDoKaListsFragmentDirections.actionOpenTodokaList(toDoKaList)
                     Navigation.findNavController(it).navigate(direction)
                 }
 

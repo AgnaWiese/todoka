@@ -15,7 +15,6 @@
  */
 package com.evgtrush.toDoKa.presentation.todoka_lists
 
-import android.R
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,7 +29,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.evgtrush.toDoKa.R
-import com.evgtrush.toDoKa.databinding.FragmentToDoKaListsBinding
+import com.evgtrush.toDoKa.databinding.FragmentTodokaListsBinding
 import com.evgtrush.toDoKa.domain.models.ToDoKaList
 import com.evgtrush.toDoKa.presentation.todoka_lists.adapter.ToDoKaListsAdapter
 import com.evgtrush.toDoKa.presentation.utils.showBottomNav
@@ -45,7 +44,7 @@ class ToDoKaListsFragment : Fragment() {
 
     private val viewModel: ToDoKaListsViewModel by viewModels()
 
-    private var _binding: FragmentToDoKaListsBinding? = null
+    private var _binding: FragmentTodokaListsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -53,7 +52,7 @@ class ToDoKaListsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentToDoKaListsBinding.inflate(inflater, container, false)
+        _binding = FragmentTodokaListsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -123,7 +122,7 @@ class ToDoKaListsFragment : Fragment() {
                 )
                 dialog.dismiss()
             }
-            .setNegativeButton(R.string.cancel) { dialog, _ ->
+            .setNegativeButton(android.R.string.cancel) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

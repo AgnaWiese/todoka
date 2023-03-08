@@ -16,21 +16,21 @@
 package com.evgtrush.toDoKa.data.datasources.db
 
 import androidx.room.*
-import com.evgtrush.toDoKa.data.datasources.db.AppDatabase.Companion.TABLE_SHOPPING_LISTS
+import com.evgtrush.toDoKa.data.datasources.db.AppDatabase.Companion.TABLE_TODOKA_LISTS
 import com.evgtrush.toDoKa.data.models.db.TоDoKaListEntity
 
 @Dao
 interface ToDoKaListDao {
 
-    @Query("SELECT * FROM $TABLE_SHOPPING_LISTS")
+    @Query("SELECT * FROM $TABLE_TODOKA_LISTS")
     suspend fun getAll(): List<TоDoKaListEntity>
 
     @Insert
-    suspend fun insertAll(vararg shoppingLists: TоDoKaListEntity): LongArray
+    suspend fun insertAll(vararg toDoKaLists: TоDoKaListEntity): LongArray
 
     @Update
-    suspend fun update(shoppingList: TоDoKaListEntity)
+    suspend fun update(toDoKaList: TоDoKaListEntity)
 
     @Delete
-    suspend fun delete(shoppingList: TоDoKaListEntity)
+    suspend fun delete(toDoKaList: TоDoKaListEntity)
 }

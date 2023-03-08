@@ -48,7 +48,7 @@ class RecipesViewModelTest {
             Recipe(
                 name = "Test Recipe",
                 type = "main dish",
-                author = "FoodBag"
+                author = "toDoKa"
             )
         )
     }

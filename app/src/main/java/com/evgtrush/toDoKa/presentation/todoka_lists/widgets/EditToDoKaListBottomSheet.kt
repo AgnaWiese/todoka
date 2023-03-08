@@ -22,6 +22,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
 import com.evgtrush.toDoKa.R
+import com.evgtrush.toDoKa.databinding.BottomSheetEditTodokaListBinding
 import com.evgtrush.toDoKa.domain.models.ToDoKaList
 import com.evgtrush.toDoKa.presentation.todoka_lists.ToDoKaListsViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -36,7 +37,7 @@ class EditToDoKaListBottomSheet(
         const val TAG = "EditToDoKaListBottomSheet"
     }
 
-    private var _binding: BottomSheetEditToDoKaListBinding? = null
+    private var _binding: BottomSheetEditTodokaListBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -44,7 +45,7 @@ class EditToDoKaListBottomSheet(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = BottomSheetEditToDoKaListBinding.inflate(inflater, container, false)
+        _binding = BottomSheetEditTodokaListBinding.inflate(inflater, container, false)
         return binding.root
     }
 

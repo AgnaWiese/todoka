@@ -48,7 +48,7 @@ class NetworkRecipeDataSourceImplTest {
             RecipeDto(
                 name = "Test Recipe",
                 type = "main dish",
-                author = "FoodBag"
+                author = "ToDoKa"
             )
         )
     }

@@ -135,10 +135,10 @@
                         android:layout_height="wrap_content"/>
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_add_to_to_do_ka_list"
+                        android:id="@+id/btn_add_to_toDoKa_list"
                         style="@style/Widget.Material3.Button.TextButton"
                         android:layout_marginHorizontal="12dp"
-                        android:text="@string/add_to_shopping_list"
+                        android:text="@string/add_to_toDoKa_list"
                         android:layout_marginTop="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>

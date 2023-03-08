@@ -16,27 +16,27 @@
 package com.evgtrush.toDoKa.data.datasources.db
 
 import androidx.room.*
-import com.evgtrush.toDoKa.data.datasources.db.AppDatabase.Companion.TABLE_SHOPPING_ITEMS
+import com.evgtrush.toDoKa.data.datasources.db.AppDatabase.Companion.TABLE_TODOKA_ITEMS
 import com.evgtrush.toDoKa.data.models.db.ToDoKaItemEntity
 
 @Dao
 interface ToDoKaItemDao {
 
-    @Query("SELECT * FROM $TABLE_SHOPPING_ITEMS WHERE shopping_list_id = (:id)")
+    @Query("SELECT * FROM $TABLE_TODOKA_ITEMS WHERE toDoKa_list_id = (:id)")
     suspend fun getAllByToDoKaListId(id: Int): List<ToDoKaItemEntity>
     
-    @Query("SELECT COUNT(uid) FROM $TABLE_SHOPPING_ITEMS WHERE shopping_list_id = (:id) AND bought = true")
+    @Query("SELECT COUNT(uid) FROM $TABLE_TODOKA_ITEMS WHERE toDoKa_list_id = (:id) AND bought = true")
     suspend fun getBoughtItemsCountByToDoKaListId(id: Int): Int
 
-    @Query("SELECT COUNT(uid) FROM $TABLE_SHOPPING_ITEMS WHERE shopping_list_id = (:id)")
+    @Query("SELECT COUNT(uid) FROM $TABLE_TODOKA_ITEMS WHERE toDoKa_list_id = (:id)")
     suspend fun getItemsCountByToDoKaListId(id: Int): Int
 
     @Insert
-    suspend fun insertAll(vararg shoppingItems: ToDoKaItemEntity)
+    suspend fun insertAll(vararg toDokaItems: ToDoKaItemEntity)
 
     @Update
-    suspend fun update(shoppingItem: ToDoKaItemEntity)
+    suspend fun update(toDoKaItem: ToDoKaItemEntity)
 
     @Delete
-    suspend fun delete(shoppingItem: ToDoKaItemEntity)
+    suspend fun delete(toDoKaItem: ToDoKaItemEntity)
 }

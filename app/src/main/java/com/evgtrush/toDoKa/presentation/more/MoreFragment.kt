@@ -15,7 +15,6 @@
  */
 package com.evgtrush.toDoKa.presentation.more
 
-import android.R
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -68,7 +67,7 @@ class MoreFragment : Fragment() {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.about_toDoKa)
             .setMessage(R.string.about_toDoKa_message)
-            .setPositiveButton(R.string.ok) { dialog, _ ->
+            .setPositiveButton(android.R.string.ok) { dialog, _ ->
                 dialog.dismiss()
             }
             .show()

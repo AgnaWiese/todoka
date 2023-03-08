@@ -18,9 +18,9 @@ package com.evgtrush.toDoKa.data.models.db
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.evgtrush.toDoKa.data.datasources.db.AppDatabase.Companion.TABLE_SHOPPING_LISTS
+import com.evgtrush.toDoKa.data.datasources.db.AppDatabase.Companion.TABLE_TODOKA_LISTS
 
-@Entity(tableName = TABLE_SHOPPING_LISTS)
+@Entity(tableName = TABLE_TODOKA_LISTS)
 data class TоDoKaListEntity(
     @PrimaryKey(autoGenerate = true) val uid: Int,
     @ColumnInfo(name = "name") val name: String,

@@ -19,8 +19,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
+import com.evgtrush.toDoKa.databinding.ListItemTodokaItemBinding
 import com.evgtrush.toDoKa.domain.models.ToDoKaItem
 import com.evgtrush.toDoKa.presentation.todoka_lists.details.ToDoKaListDetailsViewModel
+import com.evgtrush.toDoKa.presentation.todoka_lists.widgets.EditToDoKaItemBottomSheet
+import com.evgtrush.toDoKa.presentation.todoka_lists.widgets.EditToDoKaListBottomSheet
 
 internal class ToDoKaListItemsAdapter(
     private val toDoKaListItems: List<ToDoKaItem>,
@@ -30,7 +33,7 @@ internal class ToDoKaListItemsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoKaListItemsViewHolder =
         ToDoKaListItemsViewHolder(
-            ListItemToDoKaItemBinding.inflate(
+            ListItemTodokaItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
@@ -40,7 +43,7 @@ internal class ToDoKaListItemsAdapter(
 
     override fun getItemCount(): Int = toDoKaListItems.size
 
-    internal class ToDoKaListItemsViewHolder(private val binding: ListItemToDoKaItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    internal class ToDoKaListItemsViewHolder(private val binding: ListItemTodokaItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bindView(toDoKaItem: ToDoKaItem, fragmentManager: FragmentManager, viewModel: ToDoKaListDetailsViewModel) {
             with(binding) {
@@ -55,7 +58,7 @@ internal class ToDoKaListItemsAdapter(
 
                 more.setOnClickListener {
                     val modalBottomSheet = EditToDoKaItemBottomSheet(toDoKaItem, viewModel)
-                    modalBottomSheet.show(fragmentManager, EditToDoKaItemBottomSheet.TAG)
+                    modalBottomSheet.show(fragmentManager, EditToDoKaListBottomSheet.TAG)
                 }
             }
         }

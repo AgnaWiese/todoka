@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/navigation_toDoKa_lists"
-        android:name="toDoKa.presentation.toDoKa_lists.ToDoKaListsFragment"
+        android:name="com.evgtrush.toDoKa.presentation.todoka_lists.ToDoKaListsFragment"
         android:label="@string/title_toDoKa_lists"
-        tools:layout="@layout/fragment_toDoKa_lists">
+        tools:layout="@layout/fragment_todoka_lists">
         <action
-            android:id="@+id/action_open_toDoKa_list"
+            android:id="@+id/action_open_todoka_list"
             app:destination="@id/navigation_toDoKa_list_details" />
     </fragment>
 
     <fragment
         android:id="@+id/navigation_recipes"
-        android:name="toDoKa.presentation.recipes.RecipesFragment"
+        android:name="com.evgtrush.toDoKa.presentation.recipes.RecipesFragment"
         android:label="@string/title_recipes"
         tools:layout="@layout/fragment_recipes">
         <action
@@ -27,16 +27,16 @@
 
     <fragment
         android:id="@+id/navigation_more"
-        android:name="toDoKa.presentation.more.MoreFragment"
+        android:name="com.evgtrush.toDoKa.presentation.more.MoreFragment"
         android:label="@string/title_more"
         tools:layout="@layout/fragment_more" />
 
     <fragment
         android:id="@+id/navigation_toDoKa_list_details"
-        android:name="toDoKa.presentation.toDoKa_lists.details.ToDoKaListDetailsFragment"
-        tools:layout="@layout/fragment_toDoKa_list_details">
+        android:name="com.evgtrush.toDoKa.presentation.todoka_lists.details.ToDoKaListDetailsFragment"
+        tools:layout="@layout/fragment_todoka_list_details">
         <argument
-            android:name="toDoKa_list"
+            android:name="todoka_list"
             app:argType="com.evgtrush.toDoKa.domain.models.ToDoKaList"
             app:nullable="true"
             android:defaultValue="@null" />
@@ -44,7 +44,7 @@
 
     <fragment
         android:id="@+id/navigation_recipe_details"
-        android:name="toDoKa.presentation.recipes.details.RecipeDetailsFragment"
+        android:name="com.evgtrush.toDoKa.presentation.recipes.details.RecipeDetailsFragment"
         tools:layout="@layout/fragment_recipe_details">
         <argument
             android:name="recipe"
@@ -54,3 +54,5 @@
     </fragment>
 
 </navigation>
+
+

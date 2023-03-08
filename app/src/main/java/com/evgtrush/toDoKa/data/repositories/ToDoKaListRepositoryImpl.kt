@@ -81,7 +81,7 @@ class ToDoKaListRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun addToDoKagItem(toDoKaItem: ToDoKaItem) = withContext(dispatcher) {
+    override suspend fun addToDoKaItem(toDoKaItem: ToDoKaItem) = withContext(dispatcher) {
         toDoKaItemDao.insertAll(toDoKaItemMapper.reverse(toDoKaItem))
     }
 
