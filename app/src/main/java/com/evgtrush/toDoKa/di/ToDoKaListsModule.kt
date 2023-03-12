@@ -23,6 +23,7 @@ import com.evgtrush.toDoKa.data.mappers.ToDoKaItemMapperImpl
 import com.evgtrush.toDoKa.data.mappers.ToDoKaListMapper
 import com.evgtrush.toDoKa.data.mappers.ToDoKaListMapperImpl
 import com.evgtrush.toDoKa.data.repositories.MockToDoKaListRepositoryImpl
+import com.evgtrush.toDoKa.data.repositories.ToDoKaListRepositoryImpl
 import com.evgtrush.toDoKa.domain.interactors.ToDoKaListInteractor
 import com.evgtrush.toDoKa.domain.interactors.ToDoKaListInteractorImpl
 import com.evgtrush.toDoKa.domain.repositories.ToDoKaListRepository
@@ -57,7 +58,7 @@ abstract class ToDoKaListsModule {
 
     @Binds
     @ViewModelScoped
-    abstract fun bindToDoKaListRepository(impl: MockToDoKaListRepositoryImpl): ToDoKaListRepository
+    abstract fun bindToDoKaListRepository(impl: ToDoKaListRepositoryImpl): ToDoKaListRepository
 
 //    @Binds
 //    @ViewModelScoped

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ТуДуКа</string>
+    <string name="app_name">ТУДУКА</string>
 
     <string name="title_toDoKa_lists">Список тудук</string>
-    <string name="title_recipes">Рецепты</string>
+    <string name="title_recipes">Советы</string>
     <string name="title_more">Еще</string>
 
     <string name="general_error">Что-то пошло не так…</string>
@@ -30,8 +30,8 @@
     <string name="edit_list">Редактировать список</string>
     <string name="edit_item">Редактировать</string>
 
-    <string name="title_about_recipe">О рецепте</string>
-    <string name="title_ingredients">Ингридиенты</string>
+    <string name="title_about_recipe">О совете</string>
+    <string name="title_ingredients">Что взять с собой</string>
     <string name="add_to_toDoKa_list">Добавить список тудук</string>
     <string name="steps2do">Шаги выполнения</string>
 

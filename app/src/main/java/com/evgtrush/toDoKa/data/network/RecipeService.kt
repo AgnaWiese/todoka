@@ -20,6 +20,6 @@ import retrofit2.http.GET
 
 interface RecipeService {
 
-    @GET("json/recipes.json")
+    @GET("json/todoka.json")
     suspend fun getRecipes(): List<RecipeDto>
 }

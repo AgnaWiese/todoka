@@ -26,6 +26,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.evgtrush.toDoKa.R
 import com.evgtrush.toDoKa.databinding.FragmentRecipesBinding
 import com.evgtrush.toDoKa.presentation.recipes.adapter.RecipesAdapter
@@ -54,7 +56,7 @@ class RecipesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.recipesList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         getRecipesAsync()
 
         showBottomNav()
