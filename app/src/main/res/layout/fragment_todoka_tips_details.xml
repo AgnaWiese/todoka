@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".presentation.recipes.details.RecipeDetailsFragment">
+    tools:context=".presentation.tips.details.TipsDetailsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -50,7 +50,8 @@
             android:layout_height="match_parent"
             android:paddingHorizontal="16dp"
             android:paddingBottom="8dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginBottom="40dp">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/image"
@@ -81,7 +82,7 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:text="@string/title_about_recipe"
+                        android:text="@string/title_about_tip"
                         android:textAppearance="?textAppearanceTitleLarge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -105,12 +106,12 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/ingredientsContainer"
+                android:id="@+id/toDoContainer"
                 style="?attr/materialCardViewFilledStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardElevation="0dp"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="10dp">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -120,7 +121,7 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:text="@string/title_ingredients"
+                        android:text="@string/title_toDo"
                         android:textAppearance="?textAppearanceTitleLarge"
                         android:layout_marginHorizontal="20dp"
                         android:layout_marginBottom="12dp"
@@ -128,7 +129,7 @@
                         android:layout_height="wrap_content"/>
 
                     <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/ingredients"
+                        android:id="@+id/toDo"
                         android:lineSpacingMultiplier="1.1"
                         android:layout_marginHorizontal="20dp"
                         android:layout_width="match_parent"
@@ -140,6 +141,8 @@
                         android:layout_marginHorizontal="12dp"
                         android:text="@string/add_to_toDoKa_list"
                         android:layout_marginTop="8dp"
+                        android:paddingHorizontal="20dp"
+                        android:layout_marginBottom="2dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -148,7 +151,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cookingStepsContainer"
+                android:id="@+id/to_do_steps_container"
                 style="?attr/materialCardViewFilledStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -160,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="16dp"
                     android:paddingBottom="20dp"
-                    android:paddingHorizontal="20dp"
+                    android:paddingHorizontal="0dp"
                     android:orientation="vertical">
 
                     <com.google.android.material.textview.MaterialTextView
@@ -171,10 +174,11 @@
                         android:layout_height="wrap_content"/>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/cookingStepsList"
+                        android:id="@+id/to_do_steps_list"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:scrollbars="vertical"
+                        android:paddingHorizontal="20dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>

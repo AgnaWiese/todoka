@@ -13,12 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.data.mappers
+package com.evgtrush.toDoKa.data.network
 
-import com.evgtrush.toDoKa.data.models.network.RecipeDto
-import com.evgtrush.toDoKa.domain.models.Recipe
-
-interface RecipeMapper {
-
-    fun convert(dto: RecipeDto): Recipe
+object TipRetrofitConstants {
+    const val BASE_URL = "http://194.87.244.76/"
 }

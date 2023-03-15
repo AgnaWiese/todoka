@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.presentation.recipes.adapter
+package com.evgtrush.toDoKa.presentation.tips.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -21,28 +21,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.evgtrush.toDoKa.databinding.ListItemCookingStepBinding
-import com.evgtrush.toDoKa.domain.models.RecipeStep
+import com.evgtrush.toDoKa.databinding.ListItemTodoStepBinding
+import com.evgtrush.toDoKa.domain.models.TipStep
 
-internal class RecipeStepsAdapter(private val steps: List<RecipeStep>) :
-    RecyclerView.Adapter<RecipeStepsAdapter.RecipeViewHolder>() {
+internal class TipStepsAdapter(private val steps: List<TipStep>) :
+    RecyclerView.Adapter<TipStepsAdapter.TipViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder =
-        RecipeViewHolder(
-            ListItemCookingStepBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TipViewHolder =
+        TipViewHolder(
+            ListItemTodoStepBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
 
-    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: TipViewHolder, position: Int) =
         holder.bindView(steps[position], position)
 
     override fun getItemCount(): Int = steps.size
 
-    internal class RecipeViewHolder(private val binding: ListItemCookingStepBinding) : RecyclerView.ViewHolder(binding.root) {
+    internal class TipViewHolder(private val binding: ListItemTodoStepBinding) : RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun bindView(step: RecipeStep, position: Int) {
+        fun bindView(step: TipStep, position: Int) {
             with(binding) {
                 stepText.text = "${position+1}. ${step.text}"
                 if (step.imageUrl.isEmpty()) {

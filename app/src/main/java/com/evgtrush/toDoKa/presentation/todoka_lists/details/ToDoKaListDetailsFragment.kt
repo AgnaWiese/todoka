@@ -65,12 +65,12 @@ class ToDoKaListDetailsFragment : Fragment(R.layout.fragment_todoka_list_details
 
         hideBottomNav()
 
-       val recipe = args.todokaList
+       val tip = args.todokaList
         with(binding) {
             toolbar.apply {
                 setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
                 setNavigationOnClickListener { findNavController().navigateUp() }
-                title = recipe?.name
+                title = tip?.name
             }
         }
 

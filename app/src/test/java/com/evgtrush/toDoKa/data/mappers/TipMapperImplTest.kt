@@ -15,29 +15,27 @@
  */
 package com.evgtrush.toDoKa.data.mappers
 
-import com.evgtrush.toDoKa.data.models.network.RecipeDto
-import com.evgtrush.toDoKa.data.models.network.RecipeIngredientDto
-import com.evgtrush.toDoKa.data.models.network.RecipeStepDto
-import com.evgtrush.toDoKa.domain.models.Recipe
-import com.evgtrush.toDoKa.domain.models.RecipeIngredient
-import com.evgtrush.toDoKa.domain.models.RecipeStep
+import com.evgtrush.toDoKa.data.models.network.*
+import com.evgtrush.toDoKa.domain.models.Tip
+import com.evgtrush.toDoKa.domain.models.TipToDo
+import com.evgtrush.toDoKa.domain.models.TipStep
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class RecipeMapperImplTest {
+class TipMapperImplTest {
 
-    private lateinit var mapper: RecipeMapper
-    private lateinit var recipeDto: RecipeDto
-    private lateinit var recipe: Recipe
+    private lateinit var mapper: TipMapper
+    private lateinit var tipDto: TipDto
+    private lateinit var tip: Tip
 
     @Before
     fun setUp() {
-        mapper = RecipeMapperImpl()
-        recipeDto =
-            RecipeDto(
-                name = "Test recipe",
+        mapper = TipMapperImpl()
+        tipDto =
+            TipDto(
+                name = "Test tip",
                 type = "main dish",
                 previewImageUrl = "https://test_preview.png",
                 imageUrl = "https://test.png",
@@ -46,22 +44,22 @@ class RecipeMapperImplTest {
                 description = "Just open a fridge",
                 complexity = 1,
                 rating = 3,
-                ingredients = listOf(
-                    RecipeIngredientDto(
+                toDo = listOf(
+                    TipToDoDto(
                         name = "Carrot",
                         qty = "1 kg."
                     )
                 ),
                 steps = listOf(
-                    RecipeStepDto(
+                    TipStepDto(
                         image = "https://test2.png",
                         text = "Make everything cool"
                     )
                 )
             )
-        recipe =
-            Recipe(
-                name = "Test recipe",
+        tip =
+            Tip(
+                name = "Test tip",
                 type = "main dish",
                 previewImageUrl = "https://test_preview.png",
                 imageUrl = "https://test.png",
@@ -70,14 +68,14 @@ class RecipeMapperImplTest {
                 description = "Just open a fridge",
                 complexity = 1,
                 rating = 3,
-                ingredients = listOf(
-                    RecipeIngredient(
+                todo = listOf(
+                    TipToDo(
                         name = "Carrot",
                         qty = "1 kg."
                     )
                 ),
                 steps = listOf(
-                    RecipeStep(
+                    TipStep(
                         imageUrl = "https://test2.png",
                         text = "Make everything cool"
                     )
@@ -88,9 +86,9 @@ class RecipeMapperImplTest {
     @Test
     fun `convert() - data model is converted correctly to domain model`() {
         runBlocking {
-            val result = mapper.convert(recipeDto)
+            val result = mapper.convert(tipDto)
 
-            Truth.assertThat(result).isEqualTo(recipe)
+            Truth.assertThat(result).isEqualTo(tip)
         }
     }
 }

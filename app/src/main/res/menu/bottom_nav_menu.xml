@@ -6,9 +6,9 @@
         android:title="@string/title_toDoKa_lists" />
 
     <item
-        android:id="@+id/navigation_recipes"
+        android:id="@+id/navigation_tips"
         android:icon="@drawable/ic_baseline_todoka_tips"
-        android:title="@string/title_recipes" />
+        android:title="@string/title_tips" />
 
     <item
         android:id="@+id/navigation_more"

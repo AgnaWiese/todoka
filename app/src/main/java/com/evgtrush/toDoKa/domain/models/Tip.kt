@@ -19,7 +19,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Recipe(
+data class Tip(
     val name: String = "",
     val type: String = "",
     val previewImageUrl: String = "",
@@ -29,18 +29,18 @@ data class Recipe(
     val description: String = "",
     val complexity: Int = 0,
     val rating: Int = 0,
-    val ingredients: List<RecipeIngredient> = emptyList(),
-    val steps: List<RecipeStep> = emptyList(),
+    val todo: List<TipToDo> = emptyList(),
+    val steps: List<TipStep> = emptyList(),
 ) : Parcelable
 
 @Parcelize
-data class RecipeIngredient(
+data class TipToDo(
     val name: String = "",
     val qty: String = "",
 ) : Parcelable
 
 @Parcelize
-data class RecipeStep(
+data class TipStep(
     val imageUrl: String = "",
     val text: String = "",
 ) : Parcelable

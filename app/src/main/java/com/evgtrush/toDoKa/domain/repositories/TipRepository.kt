@@ -13,8 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.data.network
+package com.evgtrush.toDoKa.domain.repositories
 
-object RecipeRetrofitConstants {
-    const val BASE_URL = "http://194.87.244.76/"
+import com.evgtrush.toDoKa.domain.models.Tip
+
+interface TipRepository {
+
+    suspend fun getTips(): List<Tip>
 }

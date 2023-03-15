@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.presentation.recipes.details
+package com.evgtrush.toDoKa.presentation.tips.details
 
 import android.content.Intent
 import android.os.Bundle
@@ -31,10 +31,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.evgtrush.toDoKa.R
-import com.evgtrush.toDoKa.databinding.FragmentRecipeDetailsBinding
-import com.evgtrush.toDoKa.domain.models.Recipe
-import com.evgtrush.toDoKa.domain.models.RecipeIngredient
-import com.evgtrush.toDoKa.presentation.recipes.adapter.RecipeStepsAdapter
+import com.evgtrush.toDoKa.databinding.FragmentTodokaTipsDetailsBinding
+import com.evgtrush.toDoKa.domain.models.Tip
+import com.evgtrush.toDoKa.domain.models.TipToDo
+import com.evgtrush.toDoKa.presentation.tips.adapter.TipStepsAdapter
 import com.evgtrush.toDoKa.presentation.utils.hideBottomNav
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,12 +42,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RecipeDetailsFragment : Fragment() {
+class TipsDetailsFragment : Fragment() {
 
-    private val args: RecipeDetailsFragmentArgs by navArgs()
-    private val viewModel: RecipesDetailsViewModel by viewModels()
+    private val args: TipsDetailsFragmentArgs by navArgs()
+    private val viewModel: TipsDetailsViewModel by viewModels()
 
-    private var _binding: FragmentRecipeDetailsBinding? = null
+    private var _binding: FragmentTodokaTipsDetailsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -55,7 +55,7 @@ class RecipeDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRecipeDetailsBinding.inflate(inflater, container, false)
+        _binding = FragmentTodokaTipsDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -64,37 +64,37 @@ class RecipeDetailsFragment : Fragment() {
 
         hideBottomNav()
 
-        val recipe = args.recipe
+        val tip = args.tip
         with(binding) {
             toolbar.apply {
                 setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
                 setNavigationOnClickListener { findNavController().navigateUp() }
-                title = recipe?.name ?: ""
+                title = tip?.name ?: ""
             }
-            recipe?.let {
-                btnShare.setOnClickListener { shareRecipe(recipe) }
+            tip?.let {
+                btnShare.setOnClickListener { shareTip(tip) }
 
                 Glide
                     .with(root.context)
-                    .load(recipe.imageUrl)
+                    .load(tip.imageUrl)
                     .into(image)
 
                 rating.rating = it.rating.toFloat()
-                description.text = recipe.description
+                description.text = tip.description
 
-                if (recipe.ingredients.isEmpty()) {
-                    ingredientsContainer.visibility = View.GONE
+                if (tip.todo.isEmpty()) {
+                    toDoContainer.visibility = View.GONE
                 } else {
-                    ingredientsContainer.visibility = View.VISIBLE
-                    ingredients.text = prepareIngredientsList(it.ingredients)
-                    btnAddToToDoKaList.setOnClickListener { addToToDoKaList(recipe) }
+                    toDoContainer.visibility = View.VISIBLE
+                    toDo.text = prepareToDoList(it.todo)
+                    btnAddToToDoKaList.setOnClickListener { addToToDoKaList(tip) }
                 }
 
-                if (recipe.steps.isEmpty()) {
-                    cookingStepsContainer.visibility = View.GONE
+                if (tip.steps.isEmpty()) {
+                    toDoStepsContainer.visibility = View.GONE
                 } else {
-                    cookingStepsList.adapter = RecipeStepsAdapter(recipe.steps)
-                    cookingStepsContainer.visibility = View.VISIBLE
+                    toDoStepsList.adapter = TipStepsAdapter(tip.steps)
+                    toDoStepsContainer.visibility = View.VISIBLE
                 }
             }
         }
@@ -102,7 +102,7 @@ class RecipeDetailsFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collectLatest {
-                    Log.d("RecipesDetailsFragment", "UI update: $it")
+                    Log.d("TipsDetailsFragment", "UI update: $it")
 
                     when {
                         it.showCreateToDoKaListMessageOK -> {
@@ -126,30 +126,30 @@ class RecipeDetailsFragment : Fragment() {
         viewModel.userMessageShown()
     }
 
-    private fun shareRecipe(recipe: Recipe) {
+    private fun shareTip(tip: Tip) {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_TEXT, recipeToString(recipe))
+            putExtra(Intent.EXTRA_TEXT, tipToString(tip))
         }
 
         startActivity(Intent.createChooser(intent, getString(R.string.share)))
     }
 
-    private fun addToToDoKaList(recipe: Recipe) {
-        if (recipe.ingredients.isNotEmpty()) {
-            viewModel.createToDoKaListByIngredients(recipe.name, recipe.ingredients)
+    private fun addToToDoKaList(tip: Tip) {
+        if (tip.todo.isNotEmpty()) {
+            viewModel.createToDoKaListByToDo(tip.name, tip.todo)
         }
     }
 
-    private fun recipeToString(recipe: Recipe): String =
+    private fun tipToString(tip: Tip): String =
         """
-                Recipe: ${recipe.name},
-                Description: ${recipe.description} ,
-                Ingredients: ${prepareIngredientsList(recipe.ingredients)} 
+                Tip: ${tip.name},
+                Description: ${tip.description} ,
+                toDo: ${prepareToDoList(tip.todo)} 
         """.trimIndent()
 
-    private fun prepareIngredientsList(ingredients: List<RecipeIngredient>): String =
-        ingredients.joinToString(
+    private fun prepareToDoList(toDo: List<TipToDo>): String =
+        toDo.joinToString(
             separator = "\n",
             transform = {
                 if (it.qty.isEmpty()) {

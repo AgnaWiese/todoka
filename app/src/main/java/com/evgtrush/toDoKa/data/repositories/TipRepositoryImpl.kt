@@ -15,22 +15,22 @@
  */
 package com.evgtrush.toDoKa.data.repositories
 
-import com.evgtrush.toDoKa.data.datasources.network.NetworkRecipeDataSource
-import com.evgtrush.toDoKa.data.mappers.RecipeMapper
-import com.evgtrush.toDoKa.domain.models.Recipe
-import com.evgtrush.toDoKa.domain.repositories.RecipeRepository
+import com.evgtrush.toDoKa.data.datasources.network.NetworkTipDataSource
+import com.evgtrush.toDoKa.data.mappers.TipMapper
+import com.evgtrush.toDoKa.domain.models.Tip
+import com.evgtrush.toDoKa.domain.repositories.TipRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class RecipeRepositoryImpl @Inject constructor(
-    private val dataSource: NetworkRecipeDataSource,
-    private val mapper: RecipeMapper,
+class TipRepositoryImpl @Inject constructor(
+    private val dataSource: NetworkTipDataSource,
+    private val mapper: TipMapper,
     private val dispatcher: CoroutineDispatcher
-): RecipeRepository {
+): TipRepository {
 
-    override suspend fun getRecipes(): List<Recipe> = withContext(dispatcher) {
-        dataSource.getRecipes().map {
+    override suspend fun getTips(): List<Tip> = withContext(dispatcher) {
+        dataSource.getTips().map {
             mapper.convert(it)
         }
     }

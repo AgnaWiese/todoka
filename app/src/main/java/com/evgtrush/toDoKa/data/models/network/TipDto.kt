@@ -15,7 +15,7 @@
  */
 package com.evgtrush.toDoKa.data.models.network
 
-data class RecipeDto(
+data class TipDto(
     val name: String = "",
     val type: String = "",
     val previewImageUrl: String = "",
@@ -25,16 +25,16 @@ data class RecipeDto(
     val description: String = "",
     val complexity: Int = 0,
     val rating: Int = 0,
-    val ingredients: List<RecipeIngredientDto> = emptyList(),
-    val steps: List<RecipeStepDto> = emptyList(),
+    val toDo: List<TipToDoDto> = emptyList(),
+    val steps: List<TipStepDto> = emptyList(),
 )
 
-data class RecipeIngredientDto(
+data class TipToDoDto(
     val name: String = "",
     val qty: String = "",
 )
 
-data class RecipeStepDto(
+data class TipStepDto(
     val image: String = "",
     val text: String = "",
 )

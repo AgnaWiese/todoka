@@ -13,39 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.domain.interactors
+package com.evgtrush.toDoKa.data.datasources
 
-import com.evgtrush.toDoKa.domain.models.Recipe
-import com.evgtrush.toDoKa.domain.repositories.RecipeRepository
-import com.google.common.truth.Truth.assertThat
+import com.evgtrush.toDoKa.data.datasources.network.NetworkTipDataSource
+import com.evgtrush.toDoKa.data.datasources.network.NetworkTipDataSourceImpl
+import com.evgtrush.toDoKa.data.models.network.TipDto
+import com.evgtrush.toDoKa.data.network.TipService
+import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.verify
-import org.mockito.Mockito.verifyNoMoreInteractions
+import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
-class RecipeInteractorImplTest {
+class NetworkTipDataSourceImplTest {
 
     @Mock
-    private lateinit var repository: RecipeRepository
+    private lateinit var service: TipService
 
-    private lateinit var interactor: RecipeInteractor
-    private lateinit var recipes: List<Recipe>
+    private lateinit var dataSource: NetworkTipDataSource
+    private lateinit var tipsDto: List<TipDto>
 
     @Before
     fun setUp() {
-        interactor = RecipeInteractorImpl(repository)
-        recipes = listOf(
-            Recipe(
-                name = "Test Recipe",
+        dataSource = NetworkTipDataSourceImpl(service)
+        tipsDto = listOf(
+            TipDto(
+                name = "Test Tip",
                 type = "main dish",
                 author = "ToDoKa"
             )
@@ -53,14 +54,14 @@ class RecipeInteractorImplTest {
     }
 
     @Test
-    fun `getRecipes() - calls repository and returns recipes`() = runTest {
-        whenever(repository.getRecipes()).thenReturn(recipes)
+    fun `getTips() - calls service and returns tips`() = runTest{
+        whenever(service.getTips()).thenReturn(tipsDto)
 
-        val result = interactor.getRecipes()
+        val result = dataSource.getTips()
 
-        verify(repository, times(1)).getRecipes()
-        verifyNoMoreInteractions(repository)
+        Mockito.verify(service, times(1)).getTips()
+        Mockito.verifyNoMoreInteractions(service)
 
-        assertThat(result).isEqualTo(recipes)
+        Truth.assertThat(result).isEqualTo(tipsDto)
     }
 }

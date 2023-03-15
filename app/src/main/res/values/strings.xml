@@ -3,7 +3,7 @@
     <string name="app_name">toDoKa</string>
 
     <string name="title_toDoKa_lists">Todoka lists</string>
-    <string name="title_recipes">Tips</string>
+    <string name="title_tips">Tips</string>
     <string name="title_more">More</string>
 
     <string name="general_error">Something went wrong…</string>
@@ -31,8 +31,8 @@
     <string name="edit_item">Edit item</string>
 
     <string name="url_project_github" translatable="false">https://github.com/AgnaWiese/todoka</string>
-    <string name="title_about_recipe">About</string>
-    <string name="title_ingredients">Must have</string>
+    <string name="title_about_tip">About</string>
+    <string name="title_toDo">Must have</string>
     <string name="add_to_toDoKa_list">Add to todoka</string>
     <string name="steps2do">steps2do</string>
 

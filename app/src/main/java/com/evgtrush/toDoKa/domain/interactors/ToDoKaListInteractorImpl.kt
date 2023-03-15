@@ -15,7 +15,7 @@
  */
 package com.evgtrush.toDoKa.domain.interactors
 
-import com.evgtrush.toDoKa.domain.models.RecipeIngredient
+import com.evgtrush.toDoKa.domain.models.TipToDo
 import com.evgtrush.toDoKa.domain.models.ToDoKaItem
 import com.evgtrush.toDoKa.domain.models.ToDoKaList
 import com.evgtrush.toDoKa.domain.repositories.ToDoKaListRepository
@@ -31,9 +31,9 @@ class ToDoKaListInteractorImpl @Inject constructor(
     override suspend fun createToDoKaList(toDoKaList: ToDoKaList) =
         toDoKaListRepository.createToDoKaList(toDoKaList)
 
-    override suspend fun createToDoKaListByIngredients(toDoKaList: ToDoKaList,
-                                                       ingredients: List<RecipeIngredient>) =
-        toDoKaListRepository.createToDoKaListByIngredients(toDoKaList, ingredients)
+    override suspend fun createToDoKaListByToDo(toDoKaList: ToDoKaList,
+                                                       toDo: List<TipToDo>) =
+        toDoKaListRepository.createToDoKaListByToDo(toDoKaList, toDo)
 
     override suspend fun editToDoKaList(toDoKaList: ToDoKaList) =
         toDoKaListRepository.editToDoKaList(toDoKaList)

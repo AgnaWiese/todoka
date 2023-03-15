@@ -15,9 +15,9 @@
  */
 package com.evgtrush.toDoKa.domain.interactors
 
-import com.evgtrush.toDoKa.domain.models.Recipe
+import com.evgtrush.toDoKa.domain.models.Tip
 
-interface RecipeInteractor {
+interface TipInteractor {
 
-    suspend fun getRecipes(): List<Recipe>
+    suspend fun getTip(): List<Tip>
 }

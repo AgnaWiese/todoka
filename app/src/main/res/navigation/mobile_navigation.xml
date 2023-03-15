@@ -16,13 +16,13 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_recipes"
-        android:name="com.evgtrush.toDoKa.presentation.recipes.RecipesFragment"
-        android:label="@string/title_recipes"
-        tools:layout="@layout/fragment_recipes">
+        android:id="@+id/navigation_tips"
+        android:name="com.evgtrush.toDoKa.presentation.tips.TipsFragment"
+        android:label="@string/title_tips"
+        tools:layout="@layout/fragment_tips">
         <action
-            android:id="@+id/action_open_recipe"
-            app:destination="@id/navigation_recipe_details" />
+            android:id="@+id/action_open_tip"
+            app:destination="@id/navigation_tip_details" />
     </fragment>
 
     <fragment
@@ -43,12 +43,12 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_recipe_details"
-        android:name="com.evgtrush.toDoKa.presentation.recipes.details.RecipeDetailsFragment"
-        tools:layout="@layout/fragment_recipe_details">
+        android:id="@+id/navigation_tip_details"
+        android:name="com.evgtrush.toDoKa.presentation.tips.details.TipsDetailsFragment"
+        tools:layout="@layout/fragment_todoka_tips_details">
         <argument
-            android:name="recipe"
-            app:argType="com.evgtrush.toDoKa.domain.models.Recipe"
+            android:name="tip"
+            app:argType="com.evgtrush.toDoKa.domain.models.Tip"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>

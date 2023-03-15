@@ -15,7 +15,7 @@
  */
 package com.evgtrush.toDoKa.data.repositories
 
-import com.evgtrush.toDoKa.domain.models.RecipeIngredient
+import com.evgtrush.toDoKa.domain.models.TipToDo
 import com.evgtrush.toDoKa.domain.models.ToDoKaItem
 import com.evgtrush.toDoKa.domain.models.ToDoKaList
 import com.evgtrush.toDoKa.domain.repositories.ToDoKaListRepository
@@ -33,9 +33,9 @@ class MockToDoKaListRepositoryImpl @Inject constructor() : ToDoKaListRepository 
     override suspend fun createToDoKaList(toDoKaList: ToDoKaList) {
     }
 
-    override suspend fun createToDoKaListByIngredients(
+    override suspend fun createToDoKaListByToDo(
         toDoKaList: ToDoKaList,
-        ingredients: List<RecipeIngredient>
+        todo: List<TipToDo>
     ) {
     }
 

@@ -13,12 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.presentation.recipes
+package com.evgtrush.toDoKa.presentation.tips.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.evgtrush.toDoKa.domain.interactors.RecipeInteractor
-import com.evgtrush.toDoKa.domain.models.Recipe
+import com.evgtrush.toDoKa.domain.interactors.ToDoKaListInteractor
+import com.evgtrush.toDoKa.domain.models.TipToDo
+import com.evgtrush.toDoKa.domain.models.ToDoKaList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -28,20 +29,25 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RecipesViewModel @Inject constructor(
-    private val interactor: RecipeInteractor
+class TipsDetailsViewModel @Inject constructor(
+    private val interactor: ToDoKaListInteractor
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(RecipesUiState())
-    val uiState: StateFlow<RecipesUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(TipsDetailsUiState())
+    val uiState: StateFlow<TipsDetailsUiState> = _uiState.asStateFlow()
 
-    fun getRecipes() {
+    fun createToDoKaListByToDo(toDoKaListName: String, toDo: List<TipToDo>) {
         viewModelScope.launch {
             try {
-                val recipes = interactor.getRecipes()
+                interactor.createToDoKaListByToDo(
+                    toDoKaList = ToDoKaList(
+                        name = toDoKaListName
+                    ),
+                    toDo = toDo
+                )
                 _uiState.update {
                     it.copy(
-                        recipes = recipes
+                        showCreateToDoKaListMessageOK = true
                     )
                 }
             } catch (e: Exception) {
@@ -57,13 +63,14 @@ class RecipesViewModel @Inject constructor(
     fun userMessageShown() {
         _uiState.update {
             it.copy(
+                showCreateToDoKaListMessageOK = false,
                 isError = false
             )
         }
     }
 
-    data class RecipesUiState(
-        val isError: Boolean = false,
-        val recipes: List<Recipe> = emptyList()
+    data class TipsDetailsUiState(
+        val showCreateToDoKaListMessageOK: Boolean = false,
+        val isError: Boolean = false
     )
 }

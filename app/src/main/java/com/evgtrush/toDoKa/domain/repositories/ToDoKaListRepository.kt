@@ -15,7 +15,7 @@
  */
 package com.evgtrush.toDoKa.domain.repositories
 
-import com.evgtrush.toDoKa.domain.models.RecipeIngredient
+import com.evgtrush.toDoKa.domain.models.TipToDo
 import com.evgtrush.toDoKa.domain.models.ToDoKaItem
 import com.evgtrush.toDoKa.domain.models.ToDoKaList
 
@@ -25,7 +25,7 @@ interface ToDoKaListRepository {
 
     suspend fun createToDoKaList(toDoKaList: ToDoKaList)
 
-    suspend fun createToDoKaListByIngredients(toDoKaList: ToDoKaList, ingredients: List<RecipeIngredient>)
+    suspend fun createToDoKaListByToDo(toDoKaList: ToDoKaList, toDo: List<TipToDo>)
 
     suspend fun editToDoKaList(toDoKaList: ToDoKaList)
 

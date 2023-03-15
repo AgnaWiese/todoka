@@ -15,13 +15,13 @@
  */
 package com.evgtrush.toDoKa.data.datasources.network
 
-import com.evgtrush.toDoKa.data.models.network.RecipeDto
-import com.evgtrush.toDoKa.data.network.RecipeService
+import com.evgtrush.toDoKa.data.models.network.TipDto
+import com.evgtrush.toDoKa.data.network.TipService
 import javax.inject.Inject
 
-class NetworkRecipeDataSourceImpl @Inject constructor(
-    private val recipeService: RecipeService,
-): NetworkRecipeDataSource {
+class NetworkTipDataSourceImpl @Inject constructor(
+    private val tipService: TipService,
+): NetworkTipDataSource {
 
-    override suspend fun getRecipes(): List<RecipeDto> = recipeService.getRecipes()
+    override suspend fun getTips(): List<TipDto> = tipService.getTips()
 }

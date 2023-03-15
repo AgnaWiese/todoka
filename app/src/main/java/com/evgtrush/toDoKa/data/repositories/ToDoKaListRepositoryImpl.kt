@@ -19,7 +19,7 @@ import com.evgtrush.toDoKa.data.datasources.db.ToDoKaItemDao
 import com.evgtrush.toDoKa.data.datasources.db.ToDoKaListDao
 import com.evgtrush.toDoKa.data.mappers.ToDoKaItemMapper
 import com.evgtrush.toDoKa.data.mappers.ToDoKaListMapper
-import com.evgtrush.toDoKa.domain.models.RecipeIngredient
+import com.evgtrush.toDoKa.domain.models.TipToDo
 import com.evgtrush.toDoKa.domain.models.ToDoKaItem
 import com.evgtrush.toDoKa.domain.models.ToDoKaList
 import com.evgtrush.toDoKa.domain.repositories.ToDoKaListRepository
@@ -51,16 +51,16 @@ class ToDoKaListRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun createToDoKaListByIngredients(
+    override suspend fun createToDoKaListByToDo(
         toDoKaList: ToDoKaList,
-        ingredients: List<RecipeIngredient>
+        toDo: List<TipToDo>
     ) = withContext(dispatcher) {
         val ids = toDoKaListDao.insertAll(toDoKaListMapper.reverse(toDoKaList))
         //TODO: optimize
-        for (ingredient in ingredients) {
+        for (toDo in toDo) {
             toDoKaItemDao.insertAll(toDoKaItemMapper.reverse(
                 ToDoKaItem(
-                    name = ingredient.name,
+                    name = toDo.name,
                     toDoKaListId = ids[0].toInt()
                 )
             ))

@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.data.datasources.network
+package com.evgtrush.toDoKa.data.mappers
 
-import com.evgtrush.toDoKa.data.models.network.RecipeDto
+import com.evgtrush.toDoKa.data.models.network.TipDto
+import com.evgtrush.toDoKa.domain.models.Tip
 
-interface NetworkRecipeDataSource {
+interface TipMapper {
 
-    suspend fun getRecipes(): List<RecipeDto>
+    fun convert(dto: TipDto): Tip
 }

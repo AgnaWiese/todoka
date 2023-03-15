@@ -13,11 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.domain.repositories
+package com.evgtrush.toDoKa.domain.interactors
 
-import com.evgtrush.toDoKa.domain.models.Recipe
+import com.evgtrush.toDoKa.domain.models.Tip
+import com.evgtrush.toDoKa.domain.repositories.TipRepository
+import javax.inject.Inject
 
-interface RecipeRepository {
+class TipInteractorImpl @Inject constructor(
+    private val repository: TipRepository
+): TipInteractor {
 
-    suspend fun getRecipes(): List<Recipe>
+    override suspend fun getTip(): List<Tip> = repository.getTips()
+
 }

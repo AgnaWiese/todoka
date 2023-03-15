@@ -13,15 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.domain.interactors
+package com.evgtrush.toDoKa.data.datasources.network
 
-import com.evgtrush.toDoKa.domain.models.Recipe
-import com.evgtrush.toDoKa.domain.repositories.RecipeRepository
-import javax.inject.Inject
+import com.evgtrush.toDoKa.data.models.network.TipDto
 
-class RecipeInteractorImpl @Inject constructor(
-    private val repository: RecipeRepository
-): RecipeInteractor {
+interface NetworkTipDataSource {
 
-    override suspend fun getRecipes(): List<Recipe> = repository.getRecipes()
+    suspend fun getTips(): List<TipDto>
 }

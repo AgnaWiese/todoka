@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.presentation.recipes
+package com.evgtrush.toDoKa.presentation.tips
 
 import android.os.Bundle
 import android.util.Log
@@ -27,10 +27,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.evgtrush.toDoKa.R
-import com.evgtrush.toDoKa.databinding.FragmentRecipesBinding
-import com.evgtrush.toDoKa.presentation.recipes.adapter.RecipesAdapter
+import com.evgtrush.toDoKa.databinding.FragmentTipsBinding
+import com.evgtrush.toDoKa.presentation.tips.adapter.TipsAdapter
 import com.evgtrush.toDoKa.presentation.utils.showBottomNav
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,11 +37,11 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RecipesFragment : Fragment() {
+class TipsFragment : Fragment() {
 
-    private val viewModel: RecipesViewModel by viewModels()
+    private val viewModel: TipsViewModel by viewModels()
 
-    private var _binding: FragmentRecipesBinding? = null
+    private var _binding: FragmentTipsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -50,14 +49,14 @@ class RecipesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRecipesBinding.inflate(inflater, container, false)
+        _binding = FragmentTipsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recipesList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        getRecipesAsync()
+        binding.tipsList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        getTipsAsync()
 
         showBottomNav()
     }
@@ -67,15 +66,15 @@ class RecipesFragment : Fragment() {
         _binding = null
     }
 
-    private fun getRecipesAsync() {
+    private fun getTipsAsync() {
         binding.progress.visibility = View.VISIBLE
-        viewModel.getRecipes()
+        viewModel.getTips()
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collectLatest {
-                    Log.d("RecipesFragment", "UI update: $it")
+                    Log.d("TipsFragment", "UI update: $it")
 
-                    binding.recipesList.adapter = RecipesAdapter(it.recipes)
+                    binding.tipsList.adapter = TipsAdapter(it.tips)
 
                     when {
                         it.isError -> showSnackBar(R.string.general_error)

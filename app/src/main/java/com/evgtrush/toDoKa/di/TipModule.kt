@@ -15,16 +15,16 @@
  */
 package com.evgtrush.toDoKa.di
 
-import com.evgtrush.toDoKa.data.datasources.network.NetworkRecipeDataSource
-import com.evgtrush.toDoKa.data.datasources.network.NetworkRecipeDataSourceImpl
-import com.evgtrush.toDoKa.data.mappers.RecipeMapper
-import com.evgtrush.toDoKa.data.mappers.RecipeMapperImpl
-import com.evgtrush.toDoKa.data.network.RecipeRetrofitConstants
-import com.evgtrush.toDoKa.data.network.RecipeService
-import com.evgtrush.toDoKa.data.repositories.RecipeRepositoryImpl
-import com.evgtrush.toDoKa.domain.interactors.RecipeInteractor
-import com.evgtrush.toDoKa.domain.interactors.RecipeInteractorImpl
-import com.evgtrush.toDoKa.domain.repositories.RecipeRepository
+import com.evgtrush.toDoKa.data.datasources.network.NetworkTipDataSource
+import com.evgtrush.toDoKa.data.datasources.network.NetworkTipDataSourceImpl
+import com.evgtrush.toDoKa.data.mappers.TipMapper
+import com.evgtrush.toDoKa.data.mappers.TipMapperImpl
+import com.evgtrush.toDoKa.data.network.TipRetrofitConstants
+import com.evgtrush.toDoKa.data.network.TipService
+import com.evgtrush.toDoKa.data.repositories.TipRepositoryImpl
+import com.evgtrush.toDoKa.domain.interactors.TipInteractor
+import com.evgtrush.toDoKa.domain.interactors.TipInteractorImpl
+import com.evgtrush.toDoKa.domain.repositories.TipRepository
 import com.google.gson.Gson
 import dagger.Binds
 import dagger.Module
@@ -37,31 +37,31 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class RecipeModule {
+abstract class TipModule {
 
     companion object {
         @Provides
         @ViewModelScoped
-        fun provideRetrofitRecipeService(gson: Gson): RecipeService = Retrofit.Builder()
-            .baseUrl(RecipeRetrofitConstants.BASE_URL)
+        fun provideRetrofitTipService(gson: Gson): TipService = Retrofit.Builder()
+            .baseUrl(TipRetrofitConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
-            .create(RecipeService::class.java)
+            .create(TipService::class.java)
     }
 
     @Binds
     @ViewModelScoped
-    abstract fun bindNetworkRecipeDataSource(impl: NetworkRecipeDataSourceImpl): NetworkRecipeDataSource
+    abstract fun bindNetworkTipDataSource(impl: NetworkTipDataSourceImpl): NetworkTipDataSource
 
     @Binds
     @ViewModelScoped
-    abstract fun bindRecipeMapper(impl: RecipeMapperImpl): RecipeMapper
+    abstract fun bindTipMapper(impl: TipMapperImpl): TipMapper
 
     @Binds
     @ViewModelScoped
-    abstract fun bindRecipeRepository(impl: RecipeRepositoryImpl): RecipeRepository
+    abstract fun bindTipRepository(impl: TipRepositoryImpl): TipRepository
 
     @Binds
     @ViewModelScoped
-    abstract fun bindRecipeInteractor(impl: RecipeInteractorImpl): RecipeInteractor
+    abstract fun bindTipInteractor(impl: TipInteractorImpl): TipInteractor
 }

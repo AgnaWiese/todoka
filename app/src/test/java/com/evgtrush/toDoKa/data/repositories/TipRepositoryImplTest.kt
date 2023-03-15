@@ -15,11 +15,12 @@
  */
 package com.evgtrush.toDoKa.data.repositories
 
-import com.evgtrush.toDoKa.data.datasources.network.NetworkRecipeDataSource
-import com.evgtrush.toDoKa.data.mappers.RecipeMapperImpl
-import com.evgtrush.toDoKa.data.models.network.RecipeDto
-import com.evgtrush.toDoKa.domain.models.Recipe
-import com.evgtrush.toDoKa.domain.repositories.RecipeRepository
+import com.evgtrush.toDoKa.data.datasources.network.NetworkTipDataSource
+import com.evgtrush.toDoKa.data.mappers.TipMapperImpl
+import com.evgtrush.toDoKa.data.models.network.TipDto
+import com.evgtrush.toDoKa.domain.models.Tip
+import com.evgtrush.toDoKa.domain.repositories.TipRepository
+import com.evgtrush.toDoKa.presentation.tips.details.TipsDetailsFragment
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -35,32 +36,32 @@ import org.mockito.kotlin.whenever
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
-class RecipeRepositoryImplTest {
+class TipRepositoryImplTest {
 
     @Mock
-    private lateinit var dataSource: NetworkRecipeDataSource
+    private lateinit var dataSource: NetworkTipDataSource
 
-    private lateinit var recipesDto: List<RecipeDto>
-    private lateinit var recipes: List<Recipe>
-    private lateinit var repository: RecipeRepository
+    private lateinit var tipsDto: List<TipDto>
+    private lateinit var tips: List<Tip>
+    private lateinit var repository: TipRepository
 
     @Before
     fun setUp() {
-        repository = RecipeRepositoryImpl(
+        repository = TipRepositoryImpl(
             dataSource,
-            RecipeMapperImpl(),
+            TipMapperImpl(),
             Dispatchers.Default
         )
-        recipesDto = listOf(
-            RecipeDto(
-                name = "Test Recipe",
+        tipsDto = listOf(
+            TipDto(
+                name = "Test Tip",
                 type = "main dish",
                 author = "ToDoKa"
             )
         )
-        recipes = listOf(
-            Recipe(
-                name = "Test Recipe",
+        tips = listOf(
+            Tip(
+                name = "Test Tips",
                 type = "main dish",
                 author = "ToDoKa"
             )
@@ -68,14 +69,14 @@ class RecipeRepositoryImplTest {
     }
 
     @Test
-    fun `getRecipes() - calls datasource and returns recipes`() = runTest {
-        whenever(dataSource.getRecipes()).thenReturn(recipesDto)
+    fun `getTips() - calls datasource and returns tips`() = runTest {
+        whenever(dataSource.getTips()).thenReturn(tipsDto)
 
-        val result = repository.getRecipes()
+        val result = repository.getTips()
 
-        Mockito.verify(dataSource, times(1)).getRecipes()
+        Mockito.verify(dataSource, times(1)).getTips()
         Mockito.verifyNoMoreInteractions(dataSource)
 
-        assertThat(result).isEqualTo(recipes)
+        assertThat(result).isEqualTo(tips)
     }
 }

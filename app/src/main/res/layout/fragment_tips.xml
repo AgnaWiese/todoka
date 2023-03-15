@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:title="@string/title_recipes"
+                app:title="@string/title_tips"
                 android:elevation="0dp"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -35,7 +35,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recipes_list"
+            android:id="@+id/tips_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="horizontal" />

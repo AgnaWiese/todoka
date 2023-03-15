@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.presentation.recipes
+package com.evgtrush.toDoKa.presentation.tips
 
-import com.evgtrush.toDoKa.domain.interactors.RecipeInteractor
-import com.evgtrush.toDoKa.domain.models.Recipe
+import com.evgtrush.toDoKa.domain.interactors.TipInteractor
+import com.evgtrush.toDoKa.domain.models.Tip
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -32,21 +32,21 @@ import org.mockito.kotlin.whenever
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
-class RecipesViewModelTest {
+class TipsViewModelTest {
 
     @Mock
-    private lateinit var interactor: RecipeInteractor
+    private lateinit var interactor: TipInteractor
 
-    private lateinit var viewModel: RecipesViewModel
-    private lateinit var recipes: List<Recipe>
-    private lateinit var uiState: RecipesViewModel.RecipesUiState
+    private lateinit var viewModel: TipsViewModel
+    private lateinit var tips: List<Tip>
+    private lateinit var uiState: TipsViewModel.TipsUiState
 
     @Before
     fun setUp() {
-        viewModel = RecipesViewModel(interactor)
-        recipes = listOf(
-            Recipe(
-                name = "Test Recipe",
+        viewModel = TipsViewModel(interactor)
+        tips = listOf(
+            Tip(
+                name = "Test Tip",
                 type = "main dish",
                 author = "toDoKa"
             )
@@ -54,21 +54,21 @@ class RecipesViewModelTest {
     }
 
     @Test
-    fun `getRecipes() - calls interactor and returns recipes`() = runTest {
-        whenever(interactor.getRecipes()).thenReturn(recipes)
+    fun `getTips() - calls interactor and returns tips`() = runTest {
+        whenever(interactor.getTip()).thenReturn(tips)
 
         val testDispatcher = UnconfinedTestDispatcher(testScheduler)
         Dispatchers.setMain(testDispatcher)
         try {
-            viewModel.getRecipes()
+            viewModel.getTips()
 
-            Mockito.verify(interactor, times(1)).getRecipes()
+            Mockito.verify(interactor, times(1)).getTip()
             Mockito.verifyNoMoreInteractions(interactor)
 
             assertThat(viewModel.uiState.value).isEqualTo(
-                RecipesViewModel.RecipesUiState(
+                TipsViewModel.TipsUiState(
                     isError = false,
-                    recipes = recipes
+                    tips = tips
                 )
             )
         } finally {
@@ -77,19 +77,19 @@ class RecipesViewModelTest {
     }
 
     @Test
-    fun `getRecipes() - calls interactor and returns error state`() = runTest {
-        whenever(interactor.getRecipes()).thenThrow(RuntimeException())
+    fun `getTips() - calls interactor and returns error state`() = runTest {
+        whenever(interactor.getTip()).thenThrow(RuntimeException())
 
         val testDispatcher = UnconfinedTestDispatcher(testScheduler)
         Dispatchers.setMain(testDispatcher)
         try {
-            viewModel.getRecipes()
+            viewModel.getTips()
 
-            Mockito.verify(interactor, times(1)).getRecipes()
+            Mockito.verify(interactor, times(1)).getTip()
             Mockito.verifyNoMoreInteractions(interactor)
 
             assertThat(viewModel.uiState.value).isEqualTo(
-                RecipesViewModel.RecipesUiState(
+                TipsViewModel.TipsUiState(
                     isError = true
                 )
             )

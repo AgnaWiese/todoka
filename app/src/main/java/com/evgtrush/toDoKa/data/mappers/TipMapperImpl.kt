@@ -15,16 +15,16 @@
  */
 package com.evgtrush.toDoKa.data.mappers
 
-import com.evgtrush.toDoKa.data.models.network.RecipeDto
-import com.evgtrush.toDoKa.domain.models.Recipe
-import com.evgtrush.toDoKa.domain.models.RecipeIngredient
-import com.evgtrush.toDoKa.domain.models.RecipeStep
+import com.evgtrush.toDoKa.data.models.network.TipDto
+import com.evgtrush.toDoKa.domain.models.Tip
+import com.evgtrush.toDoKa.domain.models.TipToDo
+import com.evgtrush.toDoKa.domain.models.TipStep
 import javax.inject.Inject
 
-class RecipeMapperImpl @Inject constructor(): RecipeMapper {
+class TipMapperImpl @Inject constructor(): TipMapper {
 
-    override fun convert(dto: RecipeDto): Recipe =
-        Recipe(
+    override fun convert(dto: TipDto): Tip =
+        Tip(
             name = dto.name,
             type = dto.type,
             previewImageUrl = dto.previewImageUrl,
@@ -34,14 +34,14 @@ class RecipeMapperImpl @Inject constructor(): RecipeMapper {
             description = dto.description,
             complexity = dto.complexity,
             rating = dto.rating,
-            ingredients = dto.ingredients.map {
-                RecipeIngredient(
+            todo = dto.toDo.map {
+                TipToDo(
                     name = it.name,
                     qty = it.qty
                 )
             },
             steps = dto.steps.map {
-                RecipeStep(
+                TipStep(
                     imageUrl = it.image,
                     text = it.text
                 )

@@ -15,11 +15,11 @@
  */
 package com.evgtrush.toDoKa.data.network
 
-import com.evgtrush.toDoKa.data.models.network.RecipeDto
+import com.evgtrush.toDoKa.data.models.network.TipDto
 import retrofit2.http.GET
 
-interface RecipeService {
+interface TipService {
 
     @GET("json/todoka.json")
-    suspend fun getRecipes(): List<RecipeDto>
+    suspend fun getTips(): List<TipDto>
 }

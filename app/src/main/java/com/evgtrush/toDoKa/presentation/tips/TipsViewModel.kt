@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.evgtrush.toDoKa.presentation.recipes.details
+package com.evgtrush.toDoKa.presentation.tips
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.evgtrush.toDoKa.domain.interactors.ToDoKaListInteractor
-import com.evgtrush.toDoKa.domain.models.RecipeIngredient
-import com.evgtrush.toDoKa.domain.models.ToDoKaList
+import com.evgtrush.toDoKa.domain.interactors.TipInteractor
+import com.evgtrush.toDoKa.domain.models.Tip
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -29,25 +28,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RecipesDetailsViewModel @Inject constructor(
-    private val interactor: ToDoKaListInteractor
+class TipsViewModel @Inject constructor(
+    private val interactor: TipInteractor
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(RecipesDetailsUiState())
-    val uiState: StateFlow<RecipesDetailsUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(TipsUiState())
+    val uiState: StateFlow<TipsUiState> = _uiState.asStateFlow()
 
-    fun createToDoKaListByIngredients(toDoKaListName: String, ingredients: List<RecipeIngredient>) {
+    fun getTips() {
         viewModelScope.launch {
             try {
-                interactor.createToDoKaListByIngredients(
-                    toDoKaList = ToDoKaList(
-                        name = toDoKaListName
-                    ),
-                    ingredients = ingredients
-                )
+                val tips = interactor.getTip()
                 _uiState.update {
                     it.copy(
-                        showCreateToDoKaListMessageOK = true
+                        tips = tips
                     )
                 }
             } catch (e: Exception) {
@@ -63,14 +57,13 @@ class RecipesDetailsViewModel @Inject constructor(
     fun userMessageShown() {
         _uiState.update {
             it.copy(
-                showCreateToDoKaListMessageOK = false,
                 isError = false
             )
         }
     }
 
-    data class RecipesDetailsUiState(
-        val showCreateToDoKaListMessageOK: Boolean = false,
-        val isError: Boolean = false
+    data class TipsUiState(
+        val isError: Boolean = false,
+        val tips: List<Tip> = emptyList()
     )
 }
