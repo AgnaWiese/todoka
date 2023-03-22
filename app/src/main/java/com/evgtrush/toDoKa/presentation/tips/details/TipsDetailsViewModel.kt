@@ -60,6 +60,56 @@ class TipsDetailsViewModel @Inject constructor(
         }
     }
 
+    fun createFavoriteTip(toDoKaListName: String, toDo: List<TipToDo>) {
+        viewModelScope.launch {
+            try {
+                interactor.createFavoriteTip(
+                    toDoKaList = ToDoKaList(
+                        name = toDoKaListName
+                    ),
+                    toDo = toDo
+                )
+                _uiState.update {
+                    it.copy(
+                        showAddToDoKaFavoriteTipMessageOK = true,
+                        showDeleteToDoKaFavoriteTipMessageOK = false
+                    )
+                }
+            } catch (e: Exception) {
+                _uiState.update {
+                    it.copy(
+                        isError = true
+                    )
+                }
+            }
+        }
+    }
+
+    fun deleteFavoriteTip(toDoKaListName: String, toDo: List<TipToDo>) {
+        viewModelScope.launch {
+            try {
+                interactor.deleteFavoriteTip(
+                    toDoKaList = ToDoKaList(
+                        name = toDoKaListName
+                    ),
+                    toDo = toDo
+                )
+                _uiState.update {
+                    it.copy(
+                        showDeleteToDoKaFavoriteTipMessageOK = true,
+                        showAddToDoKaFavoriteTipMessageOK = false
+                    )
+                }
+            } catch (e: Exception) {
+                _uiState.update {
+                    it.copy(
+                        isError = true
+                    )
+                }
+            }
+        }
+    }
+
     fun userMessageShown() {
         _uiState.update {
             it.copy(
@@ -71,6 +121,8 @@ class TipsDetailsViewModel @Inject constructor(
 
     data class TipsDetailsUiState(
         val showCreateToDoKaListMessageOK: Boolean = false,
-        val isError: Boolean = false
+        val isError: Boolean = false,
+        val showAddToDoKaFavoriteTipMessageOK: Boolean = false,
+        val showDeleteToDoKaFavoriteTipMessageOK: Boolean = false
     )
 }

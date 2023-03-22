@@ -35,6 +35,14 @@ class ToDoKaListInteractorImpl @Inject constructor(
                                                        toDo: List<TipToDo>) =
         toDoKaListRepository.createToDoKaListByToDo(toDoKaList, toDo)
 
+    override suspend fun createFavoriteTip(toDoKaList: ToDoKaList, toDo: List<TipToDo>) {
+
+    }
+
+    override suspend fun deleteFavoriteTip(toDoKaList: ToDoKaList,
+                                                toDo: List<TipToDo>) {
+    }
+
     override suspend fun editToDoKaList(toDoKaList: ToDoKaList) =
         toDoKaListRepository.editToDoKaList(toDoKaList)
 

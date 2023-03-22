@@ -28,6 +28,12 @@ interface ToDoKaListInteractor {
     suspend fun createToDoKaListByToDo(toDoKaList: ToDoKaList,
                                        toDo: List<TipToDo>)
 
+    suspend fun createFavoriteTip(toDoKaList: ToDoKaList,
+                                       toDo: List<TipToDo>)
+
+    suspend fun deleteFavoriteTip(toDoKaList: ToDoKaList,
+                                  toDo: List<TipToDo>)
+
     suspend fun editToDoKaList(toDoKaList: ToDoKaList)
 
     suspend fun removeToDoKaList(toDoKaList: ToDoKaList)

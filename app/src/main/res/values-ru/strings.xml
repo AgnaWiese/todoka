@@ -9,6 +9,9 @@
     <string name="general_error">Что-то пошло не так…</string>
     <string name="added_to_toDoKa_list">Добавлено в списки тудук</string>
 
+    <string name="added_to_favorite">Добавлено в избранные</string>
+    <string name="deleted_from_favorite">Удалено из избранных</string>
+
     <string name="about_toDoKa">О ТудуКе</string>
     <string name="about_toDoKa_message">by Eugeniya Trushkina\n© 2023, all rights reserved\n\nVersion 1.0.0</string>
     <string name="view_source_code">Посмотреть исходный код</string>

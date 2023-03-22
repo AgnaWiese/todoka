@@ -25,6 +25,9 @@
 
     <string name="add_item">Add item</string>
 
+    <string name="added_to_favorite">Added to favorites</string>
+    <string name="deleted_from_favorite">Deleted from favorites</string>
+
     <string name="share">Share</string>
 
     <string name="edit_list">Edit list</string>

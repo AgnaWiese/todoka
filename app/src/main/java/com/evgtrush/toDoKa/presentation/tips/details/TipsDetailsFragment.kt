@@ -73,8 +73,15 @@ class TipsDetailsFragment : Fragment() {
             }
             tip?.let {
                 btnShare.setOnClickListener { shareTip(tip) }
+                btnFavorite.setOnCheckedChangeListener { checkBox, isChecked ->
+                    if (isChecked) {
+                        viewModel.createFavoriteTip(tip.name, tip.todo)
+                    } else {
+                        viewModel.deleteFavoriteTip(tip.name, tip.todo)
+                    }
+                }
 
-                Glide
+                Glide //библиотека для загрузки картинок
                     .with(root.context)
                     .load(tip.imageUrl)
                     .into(image)
@@ -108,6 +115,12 @@ class TipsDetailsFragment : Fragment() {
                         it.showCreateToDoKaListMessageOK -> {
                             showSnackBar(R.string.added_to_toDoKa_list)
                             binding.btnAddToToDoKaList.isEnabled = false
+                        }
+                        it.showAddToDoKaFavoriteTipMessageOK -> {
+                            showSnackBar(R.string.added_to_favorite)
+                        }
+                        it.showDeleteToDoKaFavoriteTipMessageOK -> {
+                            showSnackBar(R.string.deleted_from_favorite)
                         }
                         it.isError -> showSnackBar(R.string.general_error)
                     }
