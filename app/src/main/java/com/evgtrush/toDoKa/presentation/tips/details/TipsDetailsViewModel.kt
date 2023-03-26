@@ -17,6 +17,7 @@ package com.evgtrush.toDoKa.presentation.tips.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.evgtrush.toDoKa.domain.interactors.TipInteractor
 import com.evgtrush.toDoKa.domain.interactors.ToDoKaListInteractor
 import com.evgtrush.toDoKa.domain.models.TipToDo
 import com.evgtrush.toDoKa.domain.models.ToDoKaList
@@ -30,7 +31,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TipsDetailsViewModel @Inject constructor(
-    private val interactor: ToDoKaListInteractor
+    private val toDoKaListInteractor: ToDoKaListInteractor,
+    private val tipInteractor: TipInteractor
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(TipsDetailsUiState())
@@ -39,7 +41,7 @@ class TipsDetailsViewModel @Inject constructor(
     fun createToDoKaListByToDo(toDoKaListName: String, toDo: List<TipToDo>) {
         viewModelScope.launch {
             try {
-                interactor.createToDoKaListByToDo(
+                toDoKaListInteractor.createToDoKaListByToDo(
                     toDoKaList = ToDoKaList(
                         name = toDoKaListName
                     ),
@@ -63,7 +65,7 @@ class TipsDetailsViewModel @Inject constructor(
     fun createFavoriteTip(toDoKaListName: String, toDo: List<TipToDo>) {
         viewModelScope.launch {
             try {
-                interactor.createFavoriteTip(
+                tipInteractor.createFavoriteTip(
                     toDoKaList = ToDoKaList(
                         name = toDoKaListName
                     ),
@@ -88,7 +90,7 @@ class TipsDetailsViewModel @Inject constructor(
     fun deleteFavoriteTip(toDoKaListName: String, toDo: List<TipToDo>) {
         viewModelScope.launch {
             try {
-                interactor.deleteFavoriteTip(
+                tipInteractor.deleteFavoriteTip(
                     toDoKaList = ToDoKaList(
                         name = toDoKaListName
                     ),

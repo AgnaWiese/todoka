@@ -16,8 +16,14 @@
 package com.evgtrush.toDoKa.domain.interactors
 
 import com.evgtrush.toDoKa.domain.models.Tip
+import com.evgtrush.toDoKa.domain.models.TipToDo
+import com.evgtrush.toDoKa.domain.models.ToDoKaList
 
 interface TipInteractor {
 
     suspend fun getTip(): List<Tip>
+
+    suspend fun createFavoriteTip(toDoKaList: ToDoKaList, toDo: List<TipToDo>)
+
+    suspend fun deleteFavoriteTip(toDoKaList: ToDoKaList, toDo: List<TipToDo>)
 }

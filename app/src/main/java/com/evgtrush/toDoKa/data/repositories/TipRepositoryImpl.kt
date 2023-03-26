@@ -18,6 +18,8 @@ package com.evgtrush.toDoKa.data.repositories
 import com.evgtrush.toDoKa.data.datasources.network.NetworkTipDataSource
 import com.evgtrush.toDoKa.data.mappers.TipMapper
 import com.evgtrush.toDoKa.domain.models.Tip
+import com.evgtrush.toDoKa.domain.models.TipToDo
+import com.evgtrush.toDoKa.domain.models.ToDoKaList
 import com.evgtrush.toDoKa.domain.repositories.TipRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -33,5 +35,11 @@ class TipRepositoryImpl @Inject constructor(
         dataSource.getTips().map {
             mapper.convert(it)
         }
+    }
+
+    override suspend fun createFavoriteTip(toDoKaList: ToDoKaList, toDo: List<TipToDo>) {
+    }
+
+    override suspend fun deleteFavoriteTip(toDoKaList: ToDoKaList, toDo: List<TipToDo>) {
     }
 }

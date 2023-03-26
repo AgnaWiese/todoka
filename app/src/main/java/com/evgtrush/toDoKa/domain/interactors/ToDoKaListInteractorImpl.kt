@@ -17,36 +17,28 @@ package com.evgtrush.toDoKa.domain.interactors
 
 import com.evgtrush.toDoKa.domain.models.TipToDo
 import com.evgtrush.toDoKa.domain.models.ToDoKaItem
-import com.evgtrush.toDoKa.domain.models.ToDoKaList
 import com.evgtrush.toDoKa.domain.repositories.ToDoKaListRepository
 import javax.inject.Inject
+import com.evgtrush.toDoKa.domain.models.ToDoKaList as ToDoKaList1
 
 class ToDoKaListInteractorImpl @Inject constructor(
     private val toDoKaListRepository: ToDoKaListRepository
 ) : ToDoKaListInteractor {
 
-    override suspend fun getToDoKaLists(): List<ToDoKaList> =
+    override suspend fun getToDoKaLists(): List<ToDoKaList1> =
         toDoKaListRepository.getToDoKaLists()
 
-    override suspend fun createToDoKaList(toDoKaList: ToDoKaList) =
+    override suspend fun createToDoKaList(toDoKaList: ToDoKaList1) =
         toDoKaListRepository.createToDoKaList(toDoKaList)
 
-    override suspend fun createToDoKaListByToDo(toDoKaList: ToDoKaList,
-                                                       toDo: List<TipToDo>) =
+    override suspend fun createToDoKaListByToDo(toDoKaList: ToDoKaList1,
+                                                toDo: List<TipToDo>) =
         toDoKaListRepository.createToDoKaListByToDo(toDoKaList, toDo)
 
-    override suspend fun createFavoriteTip(toDoKaList: ToDoKaList, toDo: List<TipToDo>) {
-
-    }
-
-    override suspend fun deleteFavoriteTip(toDoKaList: ToDoKaList,
-                                                toDo: List<TipToDo>) {
-    }
-
-    override suspend fun editToDoKaList(toDoKaList: ToDoKaList) =
+    override suspend fun editToDoKaList(toDoKaList: ToDoKaList1) =
         toDoKaListRepository.editToDoKaList(toDoKaList)
 
-    override suspend fun removeToDoKaList(toDoKaList: ToDoKaList) =
+    override suspend fun removeToDoKaList(toDoKaList: ToDoKaList1) =
         toDoKaListRepository.removeToDoKaList(toDoKaList)
 
     override suspend fun getToDoKaItems(toDoKaListListId: Int): List<ToDoKaItem> =

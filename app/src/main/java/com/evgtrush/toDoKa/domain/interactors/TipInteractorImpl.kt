@@ -16,6 +16,8 @@
 package com.evgtrush.toDoKa.domain.interactors
 
 import com.evgtrush.toDoKa.domain.models.Tip
+import com.evgtrush.toDoKa.domain.models.TipToDo
+import com.evgtrush.toDoKa.domain.models.ToDoKaList
 import com.evgtrush.toDoKa.domain.repositories.TipRepository
 import javax.inject.Inject
 
@@ -25,4 +27,10 @@ class TipInteractorImpl @Inject constructor(
 
     override suspend fun getTip(): List<Tip> = repository.getTips()
 
+    override suspend fun createFavoriteTip(toDoKaList: ToDoKaList, toDo: List<TipToDo>) =
+        repository.createFavoriteTip(toDoKaList, toDo)
+
+    override suspend fun deleteFavoriteTip(toDoKaList: ToDoKaList,
+                                           toDo: List<TipToDo>)  =
+        repository.deleteFavoriteTip(toDoKaList, toDo)
 }
